@@ -2,6 +2,7 @@
 
 const express = require('express'); // 라이브러리 참고하세요.
 const app = express(); // 라이브러리를 이용해서 객체를 만들어주세요.
+const { executeQuery } = require('./mysql');
 
 app.listen(8080, function () {
     console.log('## hi bebe on 8080 ##');
@@ -30,3 +31,12 @@ app.get('/', function (req, res) {
 // app.listen(8081, () => {
 //     console.log('http로 가동된 서버');
 // });
+
+// 예시: SELECT 쿼리 실행
+executeQuery('SELECT * FROM USERINFO')
+    .then((results) => {
+        console.log('Query results:', results);
+    })
+    .catch((error) => {
+        console.error('Error executing query:', error);
+    });
