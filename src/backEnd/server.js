@@ -36,43 +36,15 @@ app.get('/getMenuList', (req, res) => {
 });
 
 app.get('/api/customers', (req, res) => {
-    res.send([
-        {
-            id: '1',
-            image: 'https://mblogthumb-phinf.pstatic.net/20130619_253/yim530219_1371615735621JW3IC_JPEG/%B1%B8%B1%DB%B0%AD%BE%C6%C1%F6-0619-7.jpg?type=w210',
-            name: '홍길동',
-            birthday: '001212',
-            job: '직장인',
-        },
-        {
-            id: '2',
-            image: 'https://mblogthumb-phinf.pstatic.net/20130619_219/yim530219_1371615735476KEbko_JPEG/%B1%B8%B1%DB%B0%AD%BE%C6%C1%F6-0619-3.jpg?type=w210',
-            name: '홍678동',
-            birthday: '006781212',
-            job: '직678장인',
-        },
-        {
-            id: '3',
-            image: 'https://mblogthumb-phinf.pstatic.net/20130619_205/yim530219_1371615735701ak7em_JPEG/%B1%B8%B1%DB%B0%AD%BE%C6%C1%F6-0619-11.jpg?type=w210',
-            name: '홍345길동',
-            birthday: '034501212',
-            job: '직장345인',
-        },
-        {
-            id: '4',
-            image: 'https://mblogthumb-phinf.pstatic.net/20130619_214/yim530219_1371615736032UNijl_JPEG/%B1%B8%B1%DB%B0%AD%BE%C6%C1%F6-0619-12.jpg?type=w210',
-            name: '홍354길동',
-            birthday: '00231212',
-            job: '직345장인',
-        },
-        {
-            id: '5',
-            image: 'https://mblogthumb-phinf.pstatic.net/20130619_100/yim530219_1371615736285IOtTs_JPEG/%B1%B8%B1%DB%B0%AD%BE%C6%C1%F6-0619-9.jpg?type=w210',
-            name: '홍길동23',
-            birthday: '0012232312',
-            job: '직23장인',
-        },
-    ]);
+    executeQuery('SELECT * FROM `REACT-APP`.CUSTOMER')
+        .then((results) => {
+            console.log('Query results:', results);
+            res.send(results);
+        })
+        .catch((error) => {
+            console.error('Error executing query:', error);
+            res.status(500).send('Internal Server Error'); // 에러 발생 시 응답을 보냄
+        });
 });
 
 server.listen(port, () => {
