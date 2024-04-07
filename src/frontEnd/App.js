@@ -22,7 +22,7 @@ const RootTable = styled(Table)({
 });
 
 const RootCircularProgress = styled(CircularProgress)({
-    magin: (theme) => theme.spacing(3),
+    magin: (theme) => theme.spacing(2),
 });
 
 class App extends Component {
@@ -62,6 +62,7 @@ class App extends Component {
                             <TableCell>사진</TableCell>
                             <TableCell>이름</TableCell>
                             <TableCell>직업</TableCell>
+                            <TableCell>성별</TableCell>
                             <TableCell>생일</TableCell>
                         </TableRow>
                     </TableHead>
@@ -75,6 +76,7 @@ class App extends Component {
                                     name={cus.name}
                                     birthday={cus.birthday}
                                     job={cus.job}
+                                    gender={cus.gender}
                                 />
                             ))
                         ) : (
